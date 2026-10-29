@@ -998,6 +998,155 @@
       margin-bottom: 30px;
     }
 
+    /* Estilos para el modal de Cómo Comprar */
+    .how-to-buy-modal-content {
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 700px;
+      padding: 40px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      max-height: 85vh;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+    }
+
+    .how-to-buy-header {
+      padding-bottom: 15px;
+      border-bottom: 1px solid #e5e5e5;
+      margin-bottom: 20px;
+      padding-right: 30px;
+    }
+
+    .how-to-buy-header h2 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: #0b0b0b;
+    }
+
+    .how-to-buy-body {
+      overflow-y: auto;
+      padding-right: 5px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: #444444;
+    }
+
+    .how-to-buy-body h4 {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #0b0b0b;
+      text-transform: uppercase;
+      margin-top: 8px;
+    }
+
+    .how-to-buy-body p {
+      margin-bottom: 4px;
+    }
+
+    .how-to-buy-footer {
+      border-top: 1px solid #e5e5e5;
+      padding-top: 20px;
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .how-to-buy-footer button, .how-to-buy-footer div.footer-social-dropdown-wrapper {
+      flex: 1;
+      min-width: 180px;
+      position: relative;
+    }
+
+    .how-to-buy-footer button {
+      width: 100%;
+      padding: 14px;
+      border-radius: 25px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .footer-social-menu {
+      display: none;
+      position: absolute;
+      bottom: 100%;
+      left: 0;
+      width: 100%;
+      background-color: #ffffff;
+      border: 1px solid #e5e5e5;
+      border-radius: 14px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      flex-direction: column;
+      gap: 8px;
+      padding: 10px;
+      margin-bottom: 8px;
+      z-index: 10;
+    }
+
+    .footer-social-menu.active {
+      display: flex;
+    }
+
+    .footer-social-menu a {
+      color: #0b0b0b;
+      text-decoration: none;
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      padding: 10px;
+      border-radius: 10px;
+      background-color: #f8f8f8;
+      border: 1px solid #e5e5e5;
+      text-align: center;
+      transition: all 0.2s;
+    }
+
+    .footer-social-menu a:hover {
+      background-color: #0b0b0b;
+      color: #ffffff;
+      border-color: #0b0b0b;
+    }
+
+    .btn-action-primary {
+      background-color: #0b0b0b;
+      color: #ffffff;
+      border: 1px solid #0b0b0b;
+    }
+
+    .btn-action-primary:hover {
+      background-color: #c0262d;
+      border-color: #c0262d;
+    }
+
+    .btn-action-secondary {
+      background-color: #f8f8f8;
+      color: #0b0b0b;
+      border: 1px solid #e5e5e5;
+    }
+
+    .btn-action-secondary:hover {
+      background-color: #0b0b0b;
+      color: #ffffff;
+      border-color: #0b0b0b;
+    }
+
     .promo-banner-guide {
       position: fixed;
       top: 0;
@@ -1118,8 +1267,7 @@
       .catalog {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
       }
-      .product-modal-content {
-        grid-template-columns: 1fr;
+      .product-modal-content, .how-to-buy-modal-content {
         padding: 25px;
       }
       .product-img {
@@ -1178,6 +1326,7 @@
       </div>
       <div class="splash-actions">
         <button class="splash-btn" onclick="filterCategory('all')">VER PRODUCTOS</button>
+        <button class="splash-btn splash-btn-secondary" onclick="openHowToBuyModal()">CÓMO COMPRAR</button>
         <button class="splash-btn splash-btn-secondary" onclick="toggleSplashSocials()">REDES SOCIALES</button>
       </div>
       
@@ -1197,6 +1346,43 @@
       </div>
     </div>
   </section>
+
+  <!-- MODAL CÓMO COMPRAR -->
+  <div class="modal" id="how-to-buy-modal">
+    <div class="how-to-buy-modal-content">
+      <span class="close-btn" onclick="closeHowToBuyModal()">&times;</span>
+      <div class="how-to-buy-header">
+        <h2>¿Cómo realizar tu compra?</h2>
+      </div>
+      <div class="how-to-buy-body">
+        <p>Para adquirir una prenda, selecciona el diseño y la talla de tu preferencia, verifica que tus datos estén correctos y confirma tu pedido a través de WhatsApp. Si necesitas más información antes de realizar tu compra, puedes escribirnos directamente seleccionando la opción de WhatsApp en nuestra sección de Redes Sociales.</p>
+        <p><strong>Nota:</strong> El costo de envío no está incluido en el precio de los productos; la tarifa total variará según tu ubicación.</p>
+        
+        <h4>Métodos de Pago</h4>
+        <p><strong>Efectivo contra entrega:</strong> Paga tu prenda en efectivo al momento de recibirla en la dirección indicada. El costo del envío se liquida de igual forma al recibir.</p>
+        <p><strong>Transferencia bancaria (Depósito previo):</strong> Realiza tu pago mediante depósito directo antes de que la prenda sea enviada. Por seguridad de nossa empresa, el despacho se realiza tras la confirmación del pago, y el costo de envío se cancela al recibir.<br>Una vez verificado tu depósito, te daremos seguimiento continuo con el estatus y los detalles de tu envío paso a paso.</p>
+        
+        <h4>Políticas de Privacidad</h4>
+        <p>Tu privacidad y seguridad son nuestra prioridad. Para garantizar un proceso de compra rápido, transparente e intuitivo, no almacenamos tus datos personales en ninguna base de datos. Únicamente conservamos tu número de WhatsApp con tu consentimiento para mantenerte al tanto de nuestros próximos lanzamientos y colecciones exclusivas.</p>
+        
+        <h4>Cambios y Devoluciones</h4>
+        <p>Aceptamos cambios y devoluciones dentro de los primeros 7 días posteriores a la entrega, aplicable únicamente en casos de defectos de fabricación o errores por parte nuestro equipo (talla o diseño incorrecto). Transcurrido este plazo o por razones ajenas a errores de producción, no se realizarán cambios ni devoluciones.</p>
+        
+        <p>Encuentra los enlaces a nuestras plataformas oficiales en la sección de Redes Sociales y únete a la comunidad. Tu confianza y elección nos motivan a seguir creando piezas únicas para ti.</p>
+      </div>
+      <div class="how-to-buy-footer">
+        <button class="btn-action-primary" onclick="closeHowToBuyModal(); filterCategory('all');">VER PRODUCTOS</button>
+        <div class="footer-social-dropdown-wrapper">
+          <div class="footer-social-menu" id="footer-social-menu">
+            <a href="https://wa.me/50246890717" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
+            <a href="https://www.instagram.com/gnush___?stkn=MWRhZGZyY2ZucmNvbQ==" target="_blank" rel="noopener noreferrer">INSTAGRAM</a>
+            <a href="https://www.facebook.com/profile.php?id=61591449121284" target="_blank" rel="noopener noreferrer">FACEBOOK</a>
+          </div>
+          <button class="btn-action-secondary" onclick="toggleFooterSocialMenu(event)">REDES SOCIALES</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <section class="hero" id="hero-section" style="display: none;">
     <p>// FAITH. GUIDANCE. PURPOSE.</p>
@@ -1651,6 +1837,27 @@
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, { passive: true });
 
+    function openHowToBuyModal() {
+      document.getElementById('how-to-buy-modal').classList.add('open');
+      document.getElementById('splash-social-panel').classList.remove('active');
+    }
+
+    function closeHowToBuyModal() {
+      document.getElementById('how-to-buy-modal').classList.remove('open');
+      document.getElementById('footer-social-menu').classList.remove('active');
+    }
+
+    function toggleFooterSocialMenu(event) {
+      event.stopPropagation();
+      const menu = document.getElementById('footer-social-menu');
+      menu.classList.toggle('active');
+    }
+
+    window.addEventListener('click', function() {
+      const menu = document.getElementById('footer-social-menu');
+      if (menu) menu.classList.remove('active');
+    });
+
     function openOfferModal() {
       document.getElementById('offer-modal').classList.add('open');
       document.getElementById('splash-social-panel').classList.remove('active');
@@ -2063,7 +2270,7 @@
       }
 
       const name = document.getElementById('cust-name').value;
-      const phone = document.getElementById('cust-phone').value;
+      const phone = document.getElementById('cust-phone'.value);
       const address = document.getElementById('cust-address').value;
       const ref = document.getElementById('cust-ref').value;
 
