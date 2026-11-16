@@ -961,7 +961,6 @@
       font-weight: 700;
     }
 
-    /* Contenedor para separar los botones del carrito */
     .cart-buttons-group {
       display: flex;
       flex-direction: column;
@@ -1000,13 +999,13 @@
       display: flex;
     }
 
-    /* Modal de ofertas más compacto */
+    /* Modal de ofertas compacto */
     .offer-modal-content {
       background-color: #ffffff;
       border: 1px solid #c0262d;
       border-radius: 20px;
       width: 100%;
-      max-width: 580px;
+      max-width: 620px;
       padding: 28px 22px;
       position: relative;
       text-align: center;
@@ -1027,8 +1026,8 @@
 
     .offer-cards-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
       margin-top: 10px;
     }
 
@@ -1036,7 +1035,7 @@
       border: 1px solid #e5e5e5;
       background-color: #f8f8f8;
       border-radius: 14px;
-      padding: 16px 14px;
+      padding: 16px 12px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1051,25 +1050,81 @@
     }
 
     .offer-card-item h3 {
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 800;
       color: #0b0b0b;
       margin-bottom: 8px;
     }
 
     .offer-card-item p {
-      font-size: 11px;
+      font-size: 10.5px;
       color: #555555;
       line-height: 1.4;
       margin-bottom: 14px;
     }
 
     .offer-card-item .btn-buy-now {
-      padding: 10px 14px;
-      font-size: 11px;
+      padding: 10px 10px;
+      font-size: 10.5px;
     }
 
-    /* Estilos del modal "¿Cómo Comprar?" con barra fija abajo */
+    /* ESTILOS DEL MINIJUEGO DE PRECISIÓN */
+    .game-modal-content {
+      background-color: #ffffff;
+      border: 2px solid #0b0b0b;
+      border-radius: 20px;
+      width: 100%;
+      max-width: 480px;
+      padding: 30px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .game-modal-content h2 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #0b0b0b;
+      margin-bottom: 10px;
+      text-transform: uppercase;
+    }
+
+    .game-modal-content p {
+      font-size: 12px;
+      color: #666;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .timer-display {
+      font-size: 48px;
+      font-weight: 800;
+      color: #c0262d;
+      background: #f8f8f8;
+      border: 1px solid #e5e5e5;
+      border-radius: 14px;
+      padding: 20px;
+      margin-bottom: 20px;
+      letter-spacing: 2px;
+      user-select: none;
+    }
+
+    .game-attempts-info {
+      font-size: 12px;
+      font-weight: 700;
+      color: #0b0b0b;
+      margin-bottom: 15px;
+      letter-spacing: 1px;
+    }
+
+    .game-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Estilos del modal ¿Cómo Comprar? con barra fija abajo */
     .how-to-buy-content {
       background-color: #ffffff;
       border: 1px solid #e5e5e5;
@@ -1273,7 +1328,6 @@
         height: 90vh;
       }
       
-      /* Ajuste responsivo compacto para el modal de oferta en celulares */
       .offer-modal-content {
         max-width: 92%;
         padding: 22px 14px 18px 14px;
@@ -1430,7 +1484,6 @@
         <h3>HOODIES</h3>
       </div>
       <main class="catalog">
-        <!-- NUEVO HOODIE BE YOURSELF -->
         <article class="product-card" onclick="openProductModal('UNASHAMED CLUB \'BE YOURSELF\' HOODIE', { 'Negro': ['HOODIE ATRAS  BE YOURSELF.jpg', 'HOODIE ENFRENTE  BE YOURSELF.jpg', 'HOODIE MODELO BE YOURSELF.jpg'] }, 220, 'Hoodie 100% Algodón (Alta Calidad).\nCorte Clasico.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nPrecauciones: No pasar la plancha por encima del estampado para no dañar el DTF.', false, false, false, true, ['Negro'])">
           <div class="product-badge">NUEVO DROP</div>
           <img src="HOODIE ATRAS  BE YOURSELF.jpg" alt="Unashamed Club Be Yourself Hoodie" class="product-img">
@@ -1442,7 +1495,6 @@
           </div>
         </article>
 
-        <!-- BEYOND LIMITS HOODIE -->
         <article class="product-card" onclick="openProductModal('BEYOND LIMITS HOODIE', { 'Negro': ['beyond limits.jpg', 'beyond limits enfrente.jpg', 'beyond limits MODELO.jpg'] }, 280, 'Hoodie 100% Algodón (Alta Calidad).\nCorte Clasico.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nPrecauciones: No pasar la plancha por encima del estampado para no dañar el DTF.', false, false, false, true, ['Negro'])">
           <div class="product-badge">NUEVO DROP</div>
           <img src="beyond limits.jpg" alt="Beyond Limits Hoodie" class="product-img">
@@ -1511,7 +1563,6 @@
         <h3>T-SHIRTS</h3>
       </div>
       <main class="catalog">
-        <!-- TEE DAVID DE MIGUEL ANGEL -->
         <article class="product-card" onclick="openProductModal('OVERSIZE \'DAVID DE MIGUEL ANGEL\' TEE', { 'Negro': ['griego  ATRAS SHIRT.jpg', 'griego  Adelanteh  SHIRT.jpg', 'griego modelo.jpg'] }, 250, 'T-Shirt 100% Algodon (Alta Calidad).\nHilo 20 220 Gramos.\nCorte Oversize.\nDiseño exclusivo de Gnush.\nEnvios a todo el país.\n\nPrecauciones: No pasar la plancha por encima del estampado para no dañar el DTF.', false, false, false, true, ['Negro'])">
           <div class="product-badge">NUEVO DROP</div>
           <img src="griego  ATRAS SHIRT.jpg" alt="David de Miguel Angel TEE" class="product-img">
@@ -1523,7 +1574,6 @@
           </div>
         </article>
 
-        <!-- TEE FAITH WITHOUT LIMITS -->
         <article class="product-card" onclick="openProductModal('OVERSIZE \'FAITH WITHOUT LIMITS\' TEE', { 'Negro': ['FAITH WITHOUR LIMITS ATRAS.jpg', 'FAITH WITHOUR LIMITS adelante.jpg', 'fatih without limits modelo.jpg'] }, 250, 'T-Shirt 100% Algodon (Alta Calidad).\nHilo 20 220 Gramos.\nCorte Oversize.\nDiseño exclusivo de Gnush.\nEnvios a todo el país.\n\nPrecauciones: No pasar la plancha por encima del estampado para no dañar el DTF.', false, false, false, true, ['Negro'])">
           <div class="product-badge">NUEVO DROP</div>
           <img src="FAITH WITHOUR LIMITS ATRAS.jpg" alt="Faith Without Limits TEE" class="product-img">
@@ -1651,13 +1701,13 @@
           </div>
         </article>
 
-        <article class="product-card" onclick="openProductModal('GORRA GH MONOGRAM', ['GORRA GH.jpg'], 60, 'Gorra de Gabardina.\nCierre de broche de metal.\nDiseño exclusivo de Gnush.\nEnvios a todo el país.', true, false, false, false, ['Negro'])">
+        <article class="product-card" onclick="openProductModal('GORRA GH MONogram', ['GORRA GH.jpg'], 60, 'Gorra de Gabardina.\nCierre de broche de metal.\nDiseño exclusivo de Gnush.\nEnvios a todo el país.', true, false, false, false, ['Negro'])">
           <img src="GORRA GH.jpg" alt="Gorra GH Monogram" class="product-img">
           <h3>GORRA GH MONOGRAM</h3>
           <p class="price">Q.60.00</p>
           <div class="card-buttons-group">
-            <button class="btn" onclick="event.stopPropagation(); openProductModal('GORRA GH MONOGRAM', ['GORRA GH.jpg'], 60, 'Gorra de Gabardina.\nCierre de broche de metal.\nDiseño exclusivo de Gnush.\nEnvios a todo el país.', true, false, false, false, ['Negro'])">AÑADIR AL CARRITO</button>
-            <button class="btn btn-buy-now catalog-buy-btn" onclick="event.stopPropagation(); openProductModal('GORRA GH MONOGRAM', ['GORRA GH.jpg'], 60, 'Gorra de Gabardina.\nCierre de broche de metal.\nDiseño exclusivo de Gnush.\nEnvios a todo el país.', true, true, false, false, ['Negro'])">COMPRAR AHORA</button>
+            <button class="btn" onclick="event.stopPropagation(); openProductModal('GORRA GH MONogram', ['GORRA GH.jpg'], 60, 'Gorra de Gabardina.\nCierre de broche de metal.\nDiseño exclusivo de Gnush.\nEnvios a todo el país.', true, false, false, false, ['Negro'])">AÑADIR AL CARRITO</button>
+            <button class="btn btn-buy-now catalog-buy-btn" onclick="event.stopPropagation(); openProductModal('GORRA GH MONogram', ['GORRA GH.jpg'], 60, 'Gorra de Gabardina.\nCierre de broche de metal.\nDiseño exclusivo de Gnush.\nEnvios a todo el país.', true, true, false, false, ['Negro'])">COMPRAR AHORA</button>
           </div>
         </article>
 
@@ -1730,6 +1780,7 @@
     </div>
   </div>
 
+  <!-- MODAL DE OFERTAS CON EL MINIJUEGO INTEGRADO -->
   <div class="modal" id="offer-modal">
     <div class="offer-modal-content">
       <span class="close-btn" onclick="closeOfferModal()" title="Cerrar ventana de ofertas">&times;</span>
@@ -1738,30 +1789,46 @@
       <div class="offer-cards-grid">
         <div class="offer-card-item">
           <div>
-            <div class="product-badge" style="position:static; display:inline-block; margin-bottom:8px;">PROMOCIÓN 1</div>
+            <div class="product-badge" style="position:static; display:inline-block; margin-bottom:8px;">PROMOCIÓN</div>
             <h3>2 HOODIES + GORRA GRATIS</h3>
-            <p>Selecciona tus 2 hoodies favoritos y llévate una gorra de tu elección totalmente gratis.</p>
+            <p>Selecciona tus 2 hoodies favoritos y llévate una gorra gratis.</p>
           </div>
-          <button class="btn btn-buy-now" onclick="startOfferFlow('2hoodies')">ELEGIR OFERTA</button>
+          <button class="btn btn-buy-now" onclick="startOfferFlow('2hoodies')">ELEGIR</button>
         </div>
 
         <div class="offer-card-item">
           <div>
-            <div class="product-badge" style="position:static; display:inline-block; margin-bottom:8px; background-color: #0b0b0b;">10% DESCUENTO</div>
-            <h3>COMBO T-SHIRT + PANTS</h3>
-            <p>Selecciona tu T-Shirt y tu Pants favorito. Obtén un <strong>10% de descuento en ambas prendas</strong> al llevar el combo.</p>
+            <div class="product-badge" style="position:static; display:inline-block; margin-bottom:8px; background-color: #0b0b0b;">15% OFF</div>
+            <h3>PACK FULL OUTFIT</h3>
+            <p>Hoodie + T-Shirt + Pants + Gorra con 15% de descuento en cada prenda.</p>
           </div>
-          <button class="btn btn-buy-now" onclick="startOfferFlow('tshirt_pants_pack')">COMPRAR COMBO (10% OFF)</button>
+          <button class="btn btn-buy-now" onclick="startOfferFlow('fullpack')">COMPRAR PACK</button>
         </div>
 
-        <div class="offer-card-item" style="grid-column: 1 / -1;">
+        <div class="offer-card-item" style="border-color: #c0262d; background-color: #fff5f5;">
           <div>
-            <div class="product-badge" style="position:static; display:inline-block; margin-bottom:8px; background-color: #0b0b0b;">15% DESCUENTO</div>
-            <h3>PACK COMPLETO FULL OUTFIT</h3>
-            <p>Arma tu pack con Hoodie + T-Shirt + Pants + Gorra. Obtén un <strong>15% de descuento en cada prenda</strong> al llevar el conjunto completo.</p>
+            <div class="product-badge" style="position:static; display:inline-block; margin-bottom:8px; background-color: #c0262d;">MINIJUEGO</div>
+            <h3>ATINA AL 20.00</h3>
+            <p>Para el tiempo exactamente en el segundo 20.00 y gana una prenda gratis x compra de 1.</p>
           </div>
-          <button class="btn btn-buy-now" onclick="startOfferFlow('fullpack')">COMPRAR PACK (15% OFF)</button>
+          <button class="btn btn-buy-now" style="background-color: #c0262d; border-color: #c0262d;" onclick="openGameModal()">JUGAR AHORA</button>
         </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DEL MINIJUEGO -->
+  <div class="modal" id="game-modal">
+    <div class="game-modal-content">
+      <span class="close-btn" onclick="closeGameModal()">&times;</span>
+      <h2>RETO: ATINA AL 20.00</h2>
+      <p>Presiona <strong>"INICIAR JUEGO"</strong>, calcula el tiempo mentalmente mientras el cronómetro se oculta, y deténlo exactamente en el segundo <strong>20.00</strong> (ni un milisegundo más ni menos). Tienes 2 intentos.</p>
+      
+      <div class="timer-display" id="timer-display">0.000s</div>
+      <div class="game-attempts-info" id="game-attempts-info">Intentos restantes: 2</div>
+
+      <div class="game-actions" id="game-actions-container">
+        <button class="btn btn-buy-now" id="game-start-btn" onclick="startGameTimer()">INICIAR JUEGO</button>
       </div>
     </div>
   </div>
@@ -1816,7 +1883,7 @@
           <span id="cart-subtotal-price" style="text-decoration: line-through;">Q.0.00</span>
         </div>
         <div class="cart-row-detail" id="cart-savings-row" style="display: none;">
-          <span class="cart-savings-badge">Ahorras (15% OFF):</span>
+          <span class="cart-savings-badge">Ahorras (Oferta):</span>
           <span class="cart-savings-badge" id="cart-savings-price">-Q.0.00</span>
         </div>
         <div class="cart-total">
@@ -1862,7 +1929,6 @@
           </div>
         </div>
 
-        <!-- Botones separados con margen superior -->
         <div class="cart-buttons-group">
           <p style="font-size: 11px; color: #666666; text-align: center; margin-bottom: 4px;">El costo de envío es adicional y varía según tu ubicación.</p>
           <button type="submit" class="btn">CONFIRMAR PEDIDO (WHATSAPP)</button>
@@ -1907,10 +1973,17 @@
     let currentBasePrice = 0;
 
     let isOfferActive = false;
-    let activeOfferType = null; // '2hoodies', 'fullpack' o 'tshirt_pants_pack'
+    let activeOfferType = null;
 
     let lastScrollTop = 0;
     const header = document.getElementById('main-header');
+
+    // VARIABLES DEL MINIJUEGO
+    let gameInterval = null;
+    let gameStartTime = 0;
+    let gameAttempts = 0;
+    let gameWon = false;
+    const MAX_ATTEMPTS = 2;
 
     window.addEventListener('scroll', function() {
       let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -1934,6 +2007,114 @@
 
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, { passive: true });
+
+    // CONTROL DEL MINIJUEGO
+    function openGameModal() {
+      closeOfferModal();
+      
+      // Validar bloqueo persistente por dispositivo/IP (almacenado en localStorage cifrado/simulado por huella)
+      const isBlocked = localStorage.getItem('gnush_game_blocked');
+      const savedAttempts = parseInt(localStorage.getItem('gnush_game_attempts') || '0');
+      const savedWon = localStorage.getItem('gnush_game_won') === 'true';
+
+      gameAttempts = savedAttempts;
+      gameWon = savedWon;
+
+      document.getElementById('game-modal').classList.add('open');
+      updateGameUI(isBlocked === 'true' || gameAttempts >= MAX_ATTEMPTS);
+    }
+
+    function closeGameModal() {
+      if (gameInterval) clearInterval(gameInterval);
+      document.getElementById('game-modal').classList.remove('open');
+    }
+
+    function updateGameUI(isBlocked) {
+      const attemptsInfo = document.getElementById('game-attempts-info');
+      const actionsContainer = document.getElementById('game-actions-container');
+      const timerDisplay = document.getElementById('timer-display');
+
+      if (gameWon) {
+        attemptsInfo.innerText = '¡FELICIDADES! HAS GANADO UNA PRENDA GRATIS POR LA COMPRA DE 1.';
+        timerDisplay.innerText = '¡GANADO!';
+        actionsContainer.innerHTML = `<button class="btn btn-buy-now" onclick="closeGameModal(); filterCategory('all');">VER CATÁLOGO Y APLICAR PREMIO</button>`;
+        return;
+      }
+
+      if (isBlocked || gameAttempts >= MAX_ATTEMPTS) {
+        attemptsInfo.innerText = 'HAS AGOTADO TUS 2 INTENTOS DESDE ESTE DISPOSITIVO.';
+        timerDisplay.innerText = 'BLOQUEADO';
+        actionsContainer.innerHTML = `<button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">JUEGO BLOQUEADO</button>`;
+        return;
+      }
+
+      attemptsInfo.innerText = `Intentos realizados: ${gameAttempts} / ${MAX_ATTEMPTS}`;
+      timerDisplay.innerText = '0.000s';
+      actionsContainer.innerHTML = `<button class="btn btn-buy-now" id="game-start-btn" onclick="startGameTimer()">INICIAR JUEGO</button>`;
+    }
+
+    function startGameTimer() {
+      const attemptsInfo = document.getElementById('game-attempts-info');
+      const actionsContainer = document.getElementById('game-actions-container');
+      const timerDisplay = document.getElementById('timer-display');
+
+      gameAttempts++;
+      localStorage.setItem('gnush_game_attempts', gameAttempts);
+
+      attemptsInfo.innerText = `Intento ${gameAttempts} de ${MAX_ATTEMPTS} en curso...`;
+      timerDisplay.innerText = '0.000s';
+      timerDisplay.style.opacity = '1';
+
+      // Ocultar temporizador tras 1 segundo para poner a prueba al usuario
+      setTimeout(() => {
+        if (gameInterval) {
+          timerDisplay.style.opacity = '0';
+        }
+      }, 1000);
+
+      gameStartTime = performance.now();
+
+      actionsContainer.innerHTML = `<button class="btn btn-buy-now" id="game-stop-btn" style="background-color: #c0262d; border-color: #c0262d;" onclick="stopGameTimer()">¡PARAR TIEMPO YA!</button>`;
+
+      gameInterval = setInterval(() => {
+        let elapsed = (performance.now() - gameStartTime) / 1000;
+        timerDisplay.innerText = elapsed.toFixed(3) + 's';
+      }, 31);
+    }
+
+    function stopGameTimer() {
+      if (gameInterval) clearInterval(gameInterval);
+      gameInterval = null;
+
+      const timerDisplay = document.getElementById('timer-display');
+      timerDisplay.style.opacity = '1';
+
+      let elapsed = (performance.now() - gameStartTime) / 1000;
+      let elapsedStr = elapsed.toFixed(2); // Revisión a 2 decimales exactos (20.00)
+      timerDisplay.innerText = elapsed.toFixed(3) + 's';
+
+      const actionsContainer = document.getElementById('game-actions-container');
+      const attemptsInfo = document.getElementById('game-attempts-info');
+
+      // CONDICIÓN ESTRICTA: EXACTAMENTE 20.00
+      if (elapsedStr === '20.00') {
+        gameWon = true;
+        localStorage.setItem('gnush_game_won', 'true');
+        localStorage.setItem('gnush_game_blocked', 'true');
+        
+        attemptsInfo.innerText = '¡Felicidades! ¡Atinaste exactamente en el segundo 20.00!';
+        actionsContainer.innerHTML = `<button class="btn btn-buy-now" onclick="closeGameModal(); filterCategory('all');">¡RECLAMAR PRENDA GRATIS!</button>`;
+      } else {
+        if (gameAttempts >= MAX_ATTEMPTS) {
+          localStorage.setItem('gnush_game_blocked', 'true');
+          attemptsInfo.innerText = `Fallaste (${elapsedStr}s). Has agotado tus 2 intentos.`;
+          actionsContainer.innerHTML = `<button class="btn btn-secondary" disabled style="opacity: 0.5;">JUEGO BLOQUEADO</button>`;
+        } else {
+          attemptsInfo.innerText = `Fallaste (${elapsedStr}s). Te queda 1 intento.`;
+          actionsContainer.innerHTML = `<button class="btn btn-buy-now" onclick="openGameModal()">INTENTAR SEGUNDA VEZ</button>`;
+        }
+      }
+    }
 
     function openOfferModal() {
       document.getElementById('offer-modal').classList.add('open');
@@ -2011,18 +2192,9 @@
         const hoodiesAnchor = document.getElementById('hoodies-anchor');
         if (hoodiesAnchor) hoodiesAnchor.style.display = 'block';
 
-        document.getElementById('promo-banner-text').innerText = 'PASO 1 DE 2: SELECCIONA TUS 2 HOODIES';
+        document.getElementById('promo-banner-text').innerText = 'PASO 1 DE 2: SELECCIONA TU 1ER HOODIE';
         document.getElementById('promo-banner-guide').classList.add('show');
         if (hoodiesAnchor) hoodiesAnchor.scrollIntoView({ behavior: 'smooth' });
-
-      } else if (offerType === 'tshirt_pants_pack') {
-        setAllSectionsDisplay('none');
-        const tshirtsSec = document.getElementById('tshirts-section-wrapper');
-        if (tshirtsSec) tshirtsSec.style.display = 'block';
-
-        document.getElementById('promo-banner-text').innerText = 'COMBO 10% OFF — PASO 1/2: SELECCIONA TU T-SHIRT';
-        document.getElementById('promo-banner-guide').classList.add('show');
-        if (tshirtsSec) tshirtsSec.scrollIntoView({ behavior: 'smooth' });
 
       } else if (offerType === 'fullpack') {
         setAllSectionsDisplay('none');
@@ -2040,11 +2212,9 @@
       activeOfferType = null;
       updateBuyButtonsVisibility();
       
-      cart = [...preOfferCartBackup];
-      updateCartUI();
-      
       setAllSectionsDisplay('block');
       document.getElementById('promo-banner-guide').classList.remove('show');
+      updateCartUI();
     }
 
     function selectSize(size) {
@@ -2151,12 +2321,13 @@
       document.getElementById('modal-title').innerText = title;
       
       let calculatedPrice = price;
-      if (isOfferActive && activeOfferType === 'fullpack') {
+      if (gameWon && cart.length === 1) {
+        // Premio del minijuego: la segunda prenda es gratis
+        calculatedPrice = 0;
+        document.getElementById('modal-price').innerHTML = `<span style="text-decoration:line-through; font-size:16px; color:#999; margin-right:8px;">Q.${price}.00</span> <span style="color:#27ae60; font-weight:800;">¡PREMIO MINIJUEGO: GRATIS (Q.0.00)!</span>`;
+      } else if (isOfferActive && activeOfferType === 'fullpack') {
         calculatedPrice = Math.round(price * 0.85);
         document.getElementById('modal-price').innerHTML = `<span style="text-decoration:line-through; font-size:16px; color:#999; margin-right:8px;">Q.${price}.00</span> Q.${calculatedPrice}.00 (15% OFF)`;
-      } else if (isOfferActive && activeOfferType === 'tshirt_pants_pack') {
-        calculatedPrice = Math.round(price * 0.90);
-        document.getElementById('modal-price').innerHTML = `<span style="text-decoration:line-through; font-size:16px; color:#999; margin-right:8px;">Q.${price}.00</span> Q.${calculatedPrice}.00 (10% OFF)`;
       } else {
         document.getElementById('modal-price').innerText = `Q.${price}.00`;
       }
@@ -2188,11 +2359,7 @@
         <button type="button" class="option-btn size-btn ${disableXL ? 'disabled-size' : ''}" onclick="selectSize('XL')">XL</button>
       `;
 
-      if (disableS) {
-        selectedSize = 'M';
-      } else {
-        selectedSize = 'M';
-      }
+      selectedSize = 'M';
 
       const colorWrapper = document.getElementById('color-selector-wrapper');
       const colorContainer = document.getElementById('color-options-container');
@@ -2225,95 +2392,18 @@
         let isPackOffer = false;
         let offerDiscountTag = '';
 
-        if (isOfferActive && activeOfferType === 'fullpack') {
+        if (gameWon && cart.length === 1) {
+          finalPrice = 0;
+        } else if (isOfferActive && activeOfferType === 'fullpack') {
           finalPrice = Math.round(price * 0.85);
           isPackOffer = true;
           offerDiscountTag = '15%';
-        } else if (isOfferActive && activeOfferType === 'tshirt_pants_pack') {
-          finalPrice = Math.round(price * 0.90);
-          isPackOffer = true;
-          offerDiscountTag = '10%';
-        } else if (isOfferActive && activeOfferType === '2hoodies' && isCapProduct(title)) {
-          let hoodieCount = cart.filter(item => item.baseTitle.toUpperCase().includes('HOODIE')).length;
-          if (hoodieCount >= 2) finalPrice = 0;
         }
 
         let currentImg = document.getElementById('modal-img').src;
-
         addToCart(title, currentImg, finalPrice, price, description, hasSize ? selectedSize : null, hasColorOption ? selectedColor : null, isPackOffer, offerDiscountTag);
         closeProductModal();
-
-        if (isOfferActive && activeOfferType === '2hoodies') {
-          let hoodieCount = cart.filter(item => item.baseTitle.toUpperCase().includes('HOODIE')).length;
-          let capCount = cart.filter(item => isCapProduct(item.baseTitle)).length;
-
-          if (hoodieCount < 2) {
-            document.getElementById('promo-banner-text').innerText = '1ER HOODIE AGREGADO — SELECCIONA EL 2DO HOODIE';
-          } else if (hoodieCount >= 2 && capCount === 0) {
-            document.getElementById('promo-banner-text').innerText = '¡HOODIES LISTOS! SELECCIONA TU GORRA DE REGALO (DISEÑO Y COLOR)';
-            setAllSectionsDisplay('none');
-            const capsSection = document.getElementById('caps-section-wrapper');
-            if (capsSection) {
-              capsSection.style.display = 'block';
-              capsSection.scrollIntoView({ behavior: 'smooth' });
-            }
-          } else if (hoodieCount >= 2 && capCount > 0) {
-            exitOfferMode();
-            toggleCartModal();
-          }
-        } 
-        else if (isOfferActive && activeOfferType === 'tshirt_pants_pack') {
-          let hasTshirt = cart.some(i => i.baseTitle.toUpperCase().includes('TEE') || i.baseTitle.toUpperCase().includes('T-SHIRT'));
-          let hasPants = cart.some(i => i.baseTitle.toUpperCase().includes('PANTS'));
-
-          if (hasTshirt && !hasPants) {
-            document.getElementById('promo-banner-text').innerText = 'COMBO 10% OFF — PASO 2/2: SELECCIONA TU PANTS';
-            setAllSectionsDisplay('none');
-            const pantsSec = document.getElementById('pants-section-wrapper');
-            if (pantsSec) {
-              pantsSec.style.display = 'block';
-              pantsSec.scrollIntoView({ behavior: 'smooth' });
-            }
-          } else if (hasTshirt && hasPants) {
-            exitOfferMode();
-            toggleCartModal();
-          }
-        }
-        else if (isOfferActive && activeOfferType === 'fullpack') {
-          let hasHoodie = cart.some(i => i.baseTitle.toUpperCase().includes('HOODIE'));
-          let hasTshirt = cart.some(i => i.baseTitle.toUpperCase().includes('TEE') || i.baseTitle.toUpperCase().includes('T-SHIRT'));
-          let hasPants = cart.some(i => i.baseTitle.toUpperCase().includes('PANTS'));
-          let hasCap = cart.some(i => isCapProduct(i.baseTitle));
-
-          if (hasHoodie && !hasTshirt) {
-            document.getElementById('promo-banner-text').innerText = 'PACK 15% OFF — PASO 2/4: SELECCIONA TU T-SHIRT';
-            setAllSectionsDisplay('none');
-            const tshirtsSec = document.getElementById('tshirts-section-wrapper');
-            if (tshirtsSec) {
-              tshirtsSec.style.display = 'block';
-              tshirtsSec.scrollIntoView({ behavior: 'smooth' });
-            }
-          } else if (hasHoodie && hasTshirt && !hasPants) {
-            document.getElementById('promo-banner-text').innerText = 'PACK 15% OFF — PASO 3/4: SELECCIONA TU PANTS (ELIGE COLOR Y TALLA)';
-            setAllSectionsDisplay('none');
-            const pantsSec = document.getElementById('pants-section-wrapper');
-            if (pantsSec) {
-              pantsSec.style.display = 'block';
-              pantsSec.scrollIntoView({ behavior: 'smooth' });
-            }
-          } else if (hasHoodie && hasTshirt && hasPants && !hasCap) {
-            document.getElementById('promo-banner-text').innerText = 'PACK 15% OFF — PASO 4/4: SELECCIONA TU GORRA';
-            setAllSectionsDisplay('none');
-            const capsSec = document.getElementById('caps-section-wrapper');
-            if (capsSec) {
-              capsSec.style.display = 'block';
-              capsSec.scrollIntoView({ behavior: 'smooth' });
-            }
-          } else if (hasHoodie && hasTshirt && hasPants && hasCap) {
-            exitOfferMode();
-            toggleCartModal();
-          }
-        }
+        toggleCartModal();
       };
 
       document.getElementById('modal-buynow-btn').onclick = function() {
@@ -2321,21 +2411,15 @@
         let isPackOffer = false;
         let offerDiscountTag = '';
 
-        if (isOfferActive && activeOfferType === 'fullpack') {
+        if (gameWon && cart.length === 1) {
+          finalPrice = 0;
+        } else if (isOfferActive && activeOfferType === 'fullpack') {
           finalPrice = Math.round(price * 0.85);
           isPackOffer = true;
           offerDiscountTag = '15%';
-        } else if (isOfferActive && activeOfferType === 'tshirt_pants_pack') {
-          finalPrice = Math.round(price * 0.90);
-          isPackOffer = true;
-          offerDiscountTag = '10%';
-        } else if (isOfferActive && activeOfferType === '2hoodies' && isCapProduct(title)) {
-          let hoodieCount = cart.filter(item => item.baseTitle.toUpperCase().includes('HOODIE')).length;
-          if (hoodieCount >= 2) finalPrice = 0;
         }
 
         let currentImg = document.getElementById('modal-img').src;
-
         addToCart(title, currentImg, finalPrice, price, description, hasSize ? selectedSize : null, hasColorOption ? selectedColor : null, isPackOffer, offerDiscountTag);
         closeProductModal();
         
@@ -2365,12 +2449,14 @@
 
     function addToCart(title, image, price, originalPrice, description, size, color, isOfferPackItem = false, discountTag = '') {
       let cleanTitle = title;
-      let tag = discountTag || (isOfferActive && activeOfferType === 'tshirt_pants_pack' ? '10%' : '15%');
-      
-      if (isOfferActive && activeOfferType === '2hoodies' && isCapProduct(title) && price === 0) {
-        cleanTitle = `${title} (REGALO PROMOCIÓN)`;
-      } else if (isOfferPackItem || (isOfferActive && (activeOfferType === 'fullpack' || activeOfferType === 'tshirt_pants_pack'))) {
-        cleanTitle = `${title} (OFERTA PACK ${tag} OFF)`;
+      let isGameReward = false;
+
+      if (gameWon && cart.length === 1 && price === 0) {
+        cleanTitle = `${title} (¡PREMIO MINIJUEGO: 1 PRENDA GRATIS!)`;
+        isGameReward = true;
+      } else if (isOfferActive && activeOfferType === 'fullpack' || isOfferPackItem) {
+        cleanTitle = `${title} (OFERTA PACK 15% OFF)`;
+        price = Math.round(originalPrice * 0.85);
       }
 
       let specText = '';
@@ -2393,77 +2479,20 @@
         description, 
         size, 
         color, 
-        isOfferPackItem: isOfferPackItem || (isOfferActive && (activeOfferType === 'fullpack' || activeOfferType === 'tshirt_pants_pack')),
-        offerTypeTag: isOfferPackItem ? (activeOfferType || (discountTag === '10%' ? 'tshirt_pants_pack' : 'fullpack')) : null
+        isGameReward: isGameReward
       };
       cart.push(newItem);
-      
-      if (isOfferActive) {
-        preOfferCartBackup = [...cart];
-      }
 
       updateCartUI();
       return newItem;
     }
 
     function removeFromCart(index) {
-      const removedItem = cart[index];
       cart.splice(index, 1);
-
-      if (removedItem && removedItem.isOfferPackItem) {
-        validateAndCleanOfferPack();
-      }
-
-      if (isOfferActive) {
-        preOfferCartBackup = [...cart];
-      }
       updateCartUI();
     }
 
-    function validateAndCleanOfferPack() {
-      const fullPackItems = cart.filter(item => item.isOfferPackItem && item.title.includes('15% OFF'));
-      if (fullPackItems.length > 0) {
-        const hasHoodie = fullPackItems.some(i => i.baseTitle.toUpperCase().includes('HOODIE'));
-        const hasTshirt = fullPackItems.some(i => i.baseTitle.toUpperCase().includes('TEE') || i.baseTitle.toUpperCase().includes('T-SHIRT'));
-        const hasPants = fullPackItems.some(i => i.baseTitle.toUpperCase().includes('PANTS'));
-        const hasCap = fullPackItems.some(i => isCapProduct(i.baseTitle));
-
-        if (!(hasHoodie && hasTshirt && hasPants && hasCap)) {
-          cart.forEach(item => {
-            if (item.isOfferPackItem && item.title.includes('15% OFF')) {
-              item.price = item.originalPrice;
-              item.isOfferPackItem = false;
-              item.title = item.title.replace(' (OFERTA PACK 15% OFF)', '');
-            }
-          });
-        }
-      }
-
-      const tshirtPantsItems = cart.filter(item => item.isOfferPackItem && item.title.includes('10% OFF'));
-      if (tshirtPantsItems.length > 0) {
-        const hasTshirt = tshirtPantsItems.some(i => i.baseTitle.toUpperCase().includes('TEE') || i.baseTitle.toUpperCase().includes('T-SHIRT'));
-        const hasPants = tshirtPantsItems.some(i => i.baseTitle.toUpperCase().includes('PANTS'));
-
-        if (!(hasTshirt && hasPants)) {
-          cart.forEach(item => {
-            if (item.isOfferPackItem && item.title.includes('10% OFF')) {
-              item.price = item.originalPrice;
-              item.isOfferPackItem = false;
-              item.title = item.title.replace(' (OFERTA PACK 10% OFF)', '');
-            }
-          });
-        }
-      }
-    }
-
     function updateCartUI() {
-      if (isOfferActive && activeOfferType === '2hoodies') {
-        let hoodieCount = cart.filter(item => item.baseTitle.toUpperCase().includes('HOODIE')).length;
-        if (hoodieCount < 2) {
-          cart = cart.filter(item => !isCapProduct(item.baseTitle) || item.price > 0);
-        }
-      }
-
       document.getElementById('cart-count').innerText = cart.length;
 
       const itemsList = document.getElementById('cart-items-list');
@@ -2490,20 +2519,28 @@
       let totalOriginal = 0;
 
       cart.forEach((item, index) => {
+        let currentItemOriginal = item.originalPrice || item.price;
         total += item.price;
-        totalOriginal += (item.originalPrice || item.price);
+        totalOriginal += currentItemOriginal;
+
         const safeTitle = item.baseTitle.replace(/'/g, "\\'");
         const safeDesc = item.description.replace(/'/g, "\\'").replace(/\n/g, '\\n');
         const hasColor = item.color ? true : false;
         const hasSize = item.size ? true : false;
         
-        let priceDisplay = item.price === 0 ? '<span style="color: #008822; font-weight:bold;">GRATIS (Q.0.00)</span>' : `Q.${item.price}.00`;
-        if (item.originalPrice && item.originalPrice > item.price) {
-          priceDisplay = `<span style="text-decoration:line-through; font-size:11px; color:#999; margin-right:5px;">Q.${item.originalPrice}.00</span> <span style="color:#c0262d; font-weight:bold;">Q.${item.price}.00</span>`;
+        let itemSavings = currentItemOriginal - item.price;
+        let priceDisplay = '';
+
+        if (item.price === 0) {
+          priceDisplay = `<span style="text-decoration:line-through; font-size:11px; color:#999; margin-right:5px;">Q.${currentItemOriginal}.00</span> <span style="color: #27ae60; font-weight:bold;">¡GRATIS POR MINIJUEGO! (Q.0.00)</span>`;
+        } else if (itemSavings > 0) {
+          priceDisplay = `<span style="text-decoration:line-through; font-size:11px; color:#999; margin-right:5px;">Antes: Q.${currentItemOriginal}.00</span> <span style="color:#c0262d; font-weight:bold;">Q.${item.price}.00</span> <span class="cart-savings-badge" style="display:block; font-size:11px;">Ahorras: Q.${itemSavings}.00</span>`;
+        } else {
+          priceDisplay = `Q.${item.price}.00`;
         }
 
         html += `
-          <div class="cart-item" onclick="openProductModal('${safeTitle}', ['${item.image}'], ${item.originalPrice || item.price}, '${safeDesc}', ${hasColor}, false, true, ${hasSize})">
+          <div class="cart-item" onclick="openProductModal('${safeTitle}', ['${item.image}'], ${currentItemOriginal}, '${safeDesc}', ${hasColor}, false, true, ${hasSize})">
             <img src="${item.image}" alt="${item.baseTitle}" class="cart-item-thumb">
             <div class="cart-item-info">
               <strong>${item.title}</strong>
@@ -2611,14 +2648,16 @@
       let totalOriginal = 0;
 
       cart.forEach(item => {
-        let priceText = item.price === 0 ? 'GRATIS (Q.0.00)' : `Q.${item.price}.00`;
+        let currentItemOriginal = item.originalPrice || item.price;
+        let itemSavings = currentItemOriginal - item.price;
+        let priceText = item.price === 0 ? 'GRATIS (PREMIO MINIJUEGO)' : `Q.${item.price}.00 (Antes: Q.${currentItemOriginal}.00 | Ahorras: Q.${itemSavings}.00)`;
         itemsText += `- ${item.title}: ${priceText}\n`;
         total += item.price;
-        totalOriginal += (item.originalPrice || item.price);
+        totalOriginal += currentItemOriginal;
       });
 
       let savings = totalOriginal - total;
-      let savingsText = savings > 0 ? `\n*Precio sin oferta:* Q.${totalOriginal}.00\n*¡Ahorro total (15% OFF):* Q.${savings}.00!\n` : '';
+      let savingsText = savings > 0 ? `\n*Precio sin oferta:* Q.${totalOriginal}.00\n*¡Ahorro total:* Q.${savings}.00!\n` : '';
 
       const message = `*NUEVO PEDIDO GNUSH* \n\n` +
         `*Comprador:* ${name}\n` +
