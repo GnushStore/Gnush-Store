@@ -2740,6 +2740,8 @@
 
       updateBuyButtonsVisibility();
 
+      // BOTÓN AÑADIR AL CARRITO (FUERA DE OFERTAS Y DENTRO DEL MODAL):
+      // Únicamente añade la prenda al carrito y cierra la ventana (modal de producto).
       document.getElementById('modal-add-btn').onclick = function() {
         let finalPrice = price;
         let isFullPackItem = false;
@@ -2758,12 +2760,12 @@
         addToCart(title, currentImg, finalPrice, price, description, hasSize ? selectedSize : null, hasColorOption ? selectedColor : null, isFullPackItem, isPromoCapItem, categoryType);
         closeProductModal();
 
+        // Control de pasos si está activo algún flujo especial de ofertas
         if (isOfferActive && activeOfferType === 'fullpack') {
           if (fullPackStep < 4) {
             showFullPackStep(fullPackStep + 1);
           } else {
             exitOfferMode();
-            toggleCartModal();
           }
         } else if (isOfferActive && activeOfferType === '2hoodies') {
           if (promo2HoodiesStep === 1) {
@@ -2772,13 +2774,11 @@
             show2HoodiesStep(3);
           } else if (promo2HoodiesStep === 3) {
             exitOfferMode();
-            toggleCartModal();
           }
-        } else {
-          toggleCartModal();
         }
       };
 
+      // BOTÓN COMPRAR AHORA (SÍ LLEVA DIRECTAMENTE AL CARRITO)
       document.getElementById('modal-buynow-btn').onclick = function() {
         let finalPrice = price;
         let isFullPackItem = false;
