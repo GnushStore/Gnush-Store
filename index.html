@@ -8,7 +8,7 @@
   <!-- Favicon / Icono de la página web -->
   <link rel="icon" type="image/png" href="LOGO PNG.png">
 
-  <!-- SEO & Open Graph Meta Tags (Vista previa en Google y Redes Sociales) -->
+  <!-- SEO & Open Graph Meta Tags -->
   <meta name="description" content="GNUSH Official Store - Marca de ropa con estilo único, calidad premium y diseños exclusivos. Faith, Guidance, Purpose. Envíos seguros a todo el país.">
   <meta property="og:title" content="GNUSH — Official Store">
   <meta property="og:description" content="Marca de ropa con estilo único, calidad premium y diseños exclusivos. Faith, Guidance, Purpose.">
@@ -66,7 +66,7 @@
       align-items: center;
     }
 
-    /* HEADER MINIMALISTA & ESTILIZADO */
+    /* HEADER */
     header {
       width: 100%;
       padding: 18px 50px;
@@ -186,7 +186,7 @@
       border-color: #111;
     }
 
-    /* INICIO (SPLASH SECTION) */
+    /* SPLASH SECTION */
     .splash-section {
       width: 100%;
       flex-grow: 1;
@@ -220,7 +220,6 @@
       z-index: 2;
     }
 
-    /* LOGOTIPO CENTRAL MÁS GRANDE */
     .splash-img-container {
       max-width: 860px;
       width: 96%;
@@ -241,7 +240,6 @@
       border: none;
     }
 
-    /* BOTONES DE INICIO LIGERAMENTE MÁS GRANDES */
     .splash-actions {
       display: flex;
       gap: 16px;
@@ -344,7 +342,7 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* SECCIÓN HERO */
+    /* HERO */
     .hero {
       text-align: center;
       padding: 50px 20px 20px 20px;
@@ -1028,7 +1026,6 @@
       font-weight: 700;
     }
 
-    /* ESTILOS AVISO DEPÓSITO */
     .deposit-warning-box {
       background-color: #fff9f9;
       border: 1px solid #f8d7da;
@@ -1113,7 +1110,7 @@
       display: flex;
     }
 
-    /* MODAL POPUP ENTRADA (OFERTA 15% FULL OUTFIT) */
+    /* MODAL POPUP ENTRADA */
     .entry-popup-modal {
       position: fixed;
       top: 0;
@@ -1595,7 +1592,7 @@
 </head>
 <body>
 
-  <!-- MODAL DE ENTRADA (OFERTA POPUP 15% FULL OUTFIT) -->
+  <!-- MODAL DE ENTRADA -->
   <div class="entry-popup-modal" id="entry-popup-modal">
     <div class="entry-popup-content">
       <span class="close-btn" onclick="closeEntryPopup()">&times;</span>
@@ -1678,7 +1675,7 @@
     <div class="about-grid">
       <div class="about-card-text">
         <h3>DISEÑO Y ESENCIA EXCLUSIVA</h3>
-        <p>Cada prenda está diseñada bajo estrictos estándares de calidad con algodón de alta gama y acabados precisos en DTF.</p>
+        <p>Cada prenda está diseñada bajo strictly estándares de calidad con algodón de alta gama y acabados precisos en DTF.</p>
         <p>Nuestro compromiso es ofrecerte una alta calidad en nuestras prendas y un estilo único.</p>
       </div>
       <div>
@@ -2151,7 +2148,7 @@
           <span id="cart-subtotal-price" style="text-decoration: line-through;">Q.0.00</span>
         </div>
         <div class="cart-row-detail" id="cart-savings-row" style="display: none;">
-          <span class="cart-savings-badge" id="cart-savings-label">Ahorras (Oferta):</span>
+          <span class="cart-savings-badge" id="cart-savings-label">Ahorras (Oferta 15%):</span>
           <span class="cart-savings-badge" id="cart-savings-price">-Q.0.00</span>
         </div>
         <div class="cart-total">
@@ -2197,7 +2194,7 @@
           </div>
         </div>
 
-        <!-- Mensaje Informativo para Depósito / Transferencia -->
+        <!-- Mensaje Informativo Depósito -->
         <div class="deposit-warning-box" id="deposit-warning-box">
           <p><strong>IMPORTANTE:</strong> Para la opción de depósito/transferencia, el pago completo de la prenda se debe realizar <strong>antes</strong> de efectuar el envío del pedido. Una vez confirmado tu pago, le daremos seguimiento continuo a tu paquete para mantenerte informado en todo momento hasta su entrega.</p>
           <button type="button" class="deposit-warning-close" onclick="closeDepositWarning()">ENTENDIDO / SEGUIR</button>
@@ -2842,17 +2839,16 @@
 
     function recalculateCartOffers() {
       let hoodieCount = 0;
-      let promoCapFound = false;
 
       cart.forEach(item => {
         let type = item.categoryType || 'hoodie';
         if (type === 'hoodie') hoodieCount++;
       });
 
+      // Validar gorra gratis de la promo 2 hoodies
       cart.forEach(item => {
         if (item.isPromoCapItem) {
           if (hoodieCount >= 2) {
-            promoCapFound = true;
             item.price = 0;
             if (!item.title.includes('(¡GORRA GRATIS PROMOCIÓN!)')) {
               item.title += ' (¡GORRA GRATIS PROMOCIÓN!)';
@@ -2865,7 +2861,7 @@
         }
       });
 
-      const categories = ['hoodie', 'tshirt', 'pants', 'cap'];
+      // Lógica de cálculo 15% Pack Full Outfit
       let availableIndices = {
         hoodie: [],
         tshirt: [],
@@ -2890,6 +2886,7 @@
         item.title = item.title.replace(' (OFERTA PACK 15% OFF)', '');
       });
 
+      const categories = ['hoodie', 'tshirt', 'pants', 'cap'];
       let canFormPack = true;
       categories.forEach(cat => {
         if (availableIndices[cat].length === 0) canFormPack = false;
@@ -2926,7 +2923,6 @@
       const totalPrice = document.getElementById('cart-total-price');
       const subtotalPrice = document.getElementById('cart-subtotal-price');
       const savingsPrice = document.getElementById('cart-savings-price');
-      const savingsLabel = document.getElementById('cart-savings-label');
       const subtotalRow = document.getElementById('cart-subtotal-row');
       const savingsRow = document.getElementById('cart-savings-row');
       const floatingBtn = document.getElementById('floating-checkout');
@@ -2945,12 +2941,16 @@
       let html = '';
       let total = 0;
       let totalOriginal = 0;
-      let hasAnyOfferInCart = false;
+      let has15PercentOffer = false;
 
       cart.forEach((item, index) => {
         let currentItemOriginal = item.originalPrice || item.price;
         total += item.price;
         totalOriginal += currentItemOriginal;
+
+        if (item.isFullPackItem) {
+          has15PercentOffer = true;
+        }
 
         const safeTitle = item.baseTitle.replace(/'/g, "\\'");
         const safeDesc = item.description.replace(/'/g, "\\'").replace(/\n/g, '\\n');
@@ -2961,15 +2961,11 @@
         let itemSavings = currentItemOriginal - item.price;
         let priceDisplay = '';
 
-        if (itemSavings > 0 || item.price === 0) {
-          hasAnyOfferInCart = true;
-        }
-
         if (item.price === 0) {
           let freeReason = item.isPromoCapItem ? '¡GORRA GRATIS POR PROMOCIÓN!' : '¡GRATIS POR MINIJUEGO!';
           priceDisplay = `<span style="color: #27ae60; font-weight:bold;">${freeReason} (Q.0.00)</span>`;
         } else if (itemSavings > 0) {
-          priceDisplay = `<span style="color:var(--accent-red); font-weight:bold;">Q.${item.price}.00</span>`;
+          priceDisplay = `<span style="color:var(--accent-red); font-weight:bold;">Q.${item.price}.00</span> <span style="text-decoration:line-through; font-size:11px; color:#999;">Q.${currentItemOriginal}.00</span>`;
         } else {
           priceDisplay = `Q.${item.price}.00`;
         }
@@ -2989,9 +2985,11 @@
       itemsList.innerHTML = html;
 
       let savings = totalOriginal - total;
-      if (hasAnyOfferInCart && savings > 0) {
-        subtotalRow.style.display = 'none';
-        savingsRow.style.display = 'none';
+      if (has15PercentOffer && savings > 0) {
+        subtotalRow.style.display = 'flex';
+        savingsRow.style.display = 'flex';
+        subtotalPrice.innerText = `Q.${totalOriginal}.00`;
+        savingsPrice.innerText = `-Q.${savings}.00`;
       } else {
         subtotalRow.style.display = 'none';
         savingsRow.style.display = 'none';
@@ -3079,14 +3077,30 @@
       let itemsText = '';
       let total = 0;
       let totalOriginal = 0;
+      let has15PercentOffer = false;
 
       cart.forEach(item => {
         let currentItemOriginal = item.originalPrice || item.price;
+        if (item.isFullPackItem) {
+          has15PercentOffer = true;
+        }
+
         let priceText = item.price === 0 ? 'GRATIS (PROMOCIÓN / PREMIO)' : `Q.${item.price}.00`;
         itemsText += `- ${item.title}: ${priceText}\n`;
         total += item.price;
         totalOriginal += currentItemOriginal;
       });
+
+      let summaryText = '';
+      if (has15PercentOffer && (totalOriginal - total) > 0) {
+        let savings = totalOriginal - total;
+        summaryText = `\n*RESUMEN DE OFERTA 15% OFF:*\n` +
+          `- Precio Sin Oferta: Q.${totalOriginal}.00\n` +
+          `- Cuánto Ahorras: Q.${savings}.00\n` +
+          `*Total a Pagar (con 15% OFF):* Q.${total}.00`;
+      } else {
+        summaryText = `*Total a Pagar:* Q.${total}.00`;
+      }
 
       const message = `*NUEVO PEDIDO GNUSH* \n\n` +
         `*Comprador:* ${name}\n` +
@@ -3094,8 +3108,8 @@
         `*Dirección:* ${address}\n` +
         `*Punto de Referencia:* ${ref}\n` +
         `*Método de Pago:* ${selectedPaymentMethod}\n\n` +
-        `*Detalle de Productos:*\n${itemsText}` +
-        `*Total a Pagar:* Q.${total}.00`;
+        `*Detalle de Productos:*\n${itemsText}\n` +
+        `${summaryText}`;
 
       const encodedMessage = encodeURIComponent(message);
       window.open(`https://wa.me/50246890717?text=${encodedMessage}`, '_blank');
