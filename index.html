@@ -1028,6 +1028,53 @@
       font-weight: 700;
     }
 
+    /* ESTILOS AVISO DEPÓSITO */
+    .deposit-warning-box {
+      background-color: #fff9f9;
+      border: 1px solid #f8d7da;
+      border-left: 4px solid var(--accent-red);
+      padding: 14px;
+      border-radius: 12px;
+      margin-top: 14px;
+      display: none;
+      flex-direction: column;
+      gap: 8px;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .deposit-warning-box.show {
+      display: flex;
+    }
+
+    .deposit-warning-box p {
+      font-size: 11.5px;
+      color: #333333;
+      line-height: 1.5;
+    }
+
+    .deposit-warning-box p strong {
+      color: var(--accent-red);
+    }
+
+    .deposit-warning-close {
+      align-self: flex-end;
+      background: transparent;
+      border: 1px solid rgba(0,0,0,0.15);
+      padding: 4px 10px;
+      font-size: 10px;
+      font-weight: 700;
+      border-radius: 15px;
+      cursor: pointer;
+      color: #555;
+      transition: all 0.2s;
+    }
+
+    .deposit-warning-close:hover {
+      background: #111;
+      color: #fff;
+      border-color: #111;
+    }
+
     .cart-buttons-group {
       display: flex;
       flex-direction: column;
@@ -1064,6 +1111,84 @@
 
     .floating-checkout-btn.show {
       display: flex;
+    }
+
+    /* MODAL POPUP ENTRADA (OFERTA 15% FULL OUTFIT) */
+    .entry-popup-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+      padding: 20px;
+    }
+
+    .entry-popup-modal.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .entry-popup-content {
+      background-color: #ffffff;
+      border: 1px solid #111;
+      border-radius: 24px;
+      width: 100%;
+      max-width: 480px;
+      padding: 36px 28px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.2);
+      transform: translateY(20px);
+      transition: transform 0.35s ease;
+    }
+
+    .entry-popup-modal.show .entry-popup-content {
+      transform: translateY(0);
+    }
+
+    .entry-popup-tag {
+      display: inline-block;
+      background-color: var(--accent-red);
+      color: #ffffff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      margin-bottom: 16px;
+      text-transform: uppercase;
+    }
+
+    .entry-popup-content h2 {
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: 2px;
+      color: #111;
+      margin-bottom: 12px;
+      text-transform: uppercase;
+    }
+
+    .entry-popup-content p {
+      font-size: 13px;
+      color: #555555;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .entry-popup-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     /* MODAL OFERTAS */
@@ -1470,6 +1595,20 @@
 </head>
 <body>
 
+  <!-- MODAL DE ENTRADA (OFERTA POPUP 15% FULL OUTFIT) -->
+  <div class="entry-popup-modal" id="entry-popup-modal">
+    <div class="entry-popup-content">
+      <span class="close-btn" onclick="closeEntryPopup()">&times;</span>
+      <div class="entry-popup-tag">PROMOCIÓN ESPECIAL</div>
+      <h2>15% DE DESCUENTO EN FULL OUTFIT</h2>
+      <p>Arma tu look completo combinando <strong>Hoodie + T-Shirt + Pants + Gorra</strong> y obtén un 15% de descuento directo en cada prenda de tu paquete.</p>
+      <div class="entry-popup-actions">
+        <button class="btn btn-buy-now" onclick="closeEntryPopup(); startOfferFlow('fullpack');">APROVECHAR OFERTA</button>
+        <button class="btn btn-secondary" onclick="closeEntryPopup()">VER CATÁLOGO GENERAL</button>
+      </div>
+    </div>
+  </div>
+
   <div class="promo-banner-guide" id="promo-banner-guide">
     <span id="promo-banner-text">SELECCIONA TUS PRENDAS PARA LA OFERTA</span>
     <button class="exit-offer-btn" onclick="exitOfferMode()">SALIR DE OFERTA</button>
@@ -1577,6 +1716,17 @@
         <h3>HOODIES</h3>
       </div>
       <main class="catalog">
+        <article class="product-card" onclick="openProductModal('GNUSH ESSENCE HOODIE', { 'Negro': ['GNUSH MINIMALISTA HOODIE ESPALDA.jpg', 'GNUSH MINIMALISTA HOODIE ESPALDA ENFRENTE.jpg', 'GNUSH MINIMALISTA HOODIE modelo negro.jpg'], 'Blanco': ['gnush minimalista hoodie espalda atras blanco.jpg', 'gnush minimalista hoodie adelante nada.jpg', 'GNUSH MINIMALISTA HOODIE modelo blanco.jpg'] }, 220, 'Hoodie 100% Algodón (Alta Calidad).\nCorte Clasico.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', true, false, false, true, ['Negro', 'Blanco'], 'hoodie')">
+          <div class="product-badge">NUEVO DROP</div>
+          <img src="GNUSH MINIMALISTA HOODIE ESPALDA.jpg" alt="GNUSH Essence Hoodie" class="product-img">
+          <h3>GNUSH ESSENCE HOODIE</h3>
+          <p class="price">Q.220.00</p>
+          <div class="card-buttons-group">
+            <button class="btn" onclick="event.stopPropagation(); openProductModal('GNUSH ESSENCE HOODIE', { 'Negro': ['GNUSH MINIMALISTA HOODIE ESPALDA.jpg', 'GNUSH MINIMALISTA HOODIE ESPALDA ENFRENTE.jpg', 'GNUSH MINIMALISTA HOODIE modelo negro.jpg'], 'Blanco': ['gnush minimalista hoodie espalda atras blanco.jpg', 'gnush minimalista hoodie adelante nada.jpg', 'GNUSH MINIMALISTA HOODIE modelo blanco.jpg'] }, 220, 'Hoodie 100% Algodón (Alta Calidad).\nCorte Clasico.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', true, false, false, true, ['Negro', 'Blanco'], 'hoodie')">AÑADIR AL CARRITO</button>
+            <button class="btn btn-buy-now catalog-buy-btn" onclick="event.stopPropagation(); openProductModal('GNUSH ESSENCE HOODIE', { 'Negro': ['GNUSH MINIMALISTA HOODIE ESPALDA.jpg', 'GNUSH MINIMALISTA HOODIE ESPALDA ENFRENTE.jpg', 'GNUSH MINIMALISTA HOODIE modelo negro.jpg'], 'Blanco': ['gnush minimalista hoodie espalda atras blanco.jpg', 'gnush minimalista hoodie adelante nada.jpg', 'GNUSH MINIMALISTA HOODIE modelo blanco.jpg'] }, 220, 'Hoodie 100% Algodón (Alta Calidad).\nCorte Clasico.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', false, true, false, true, ['Negro', 'Blanco'], 'hoodie')">COMPRAR AHORA</button>
+          </div>
+        </article>
+
         <article class="product-card" onclick="openProductModal('UNASHAMED CLUB \'BE YOURSELF\' HOODIE', { 'Negro': ['HOODIE ATRAS  BE YOURSELF.jpg', 'HOODIE ENFRENTE  BE YOURSELF.jpg', 'HOODIE MODELO BE YOURSELF.jpg'] }, 220, 'Hoodie 100% Algodón (Alta Calidad).\nCorte Clasico.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', false, false, false, true, ['Negro'], 'hoodie')">
           <div class="product-badge">NUEVO DROP</div>
           <img src="HOODIE ATRAS  BE YOURSELF.jpg" alt="Unashamed Club Be Yourself Hoodie" class="product-img">
@@ -1766,14 +1916,14 @@
         <h3>PANTS</h3>
       </div>
       <main class="catalog">
-        <article class="product-card" onclick="openProductModal('PANTS GNUSH', { 'Negro': ['PANS NEGRO.jpg'] }, 175, 'Pants 100% Algodón (Alta Calidad).\nCorte Baggy.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nMedidas por Talla:\n- Talla S: 30 cm de ancho con elástico para cintura / 104 cm de largo\n- Talla M: 32 cm de ancho con elástico para cintura / 106 cm de largo\n- Talla L: 34 cm de ancho con elástico para cintura / 108 cm de largo\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', false, false, false, true, ['Negro'], 'pants')">
+        <article class="product-card" onclick="openProductModal('PANTS GNUSH', { 'Negro': ['PANS NEGRO.jpg', 'PANS NEGRO 2.jpg', 'PANS NEGRO 3.jpg'] }, 175, 'Pants 100% Algodón (Alta Calidad).\nCorte Baggy.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nMedidas por Talla:\n- Talla S: 30 cm de ancho con elástico para cintura / 104 cm de largo\n- Talla M: 32 cm de ancho con elástico para cintura / 106 cm de largo\n- Talla L: 34 cm de ancho con elástico para cintura / 108 cm de largo\n- Talla XL: 36 cm de ancho con elástico para cintura / 110 cm de largo\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', false, false, false, true, ['Negro'], 'pants')">
           <div class="product-badge">NUEVO INGRESO</div>
           <img src="PANS NEGRO.jpg" alt="Pants Gnush" class="product-img">
           <h3>PANTS GNUSH</h3>
           <p class="price">Q.175.00</p>
           <div class="card-buttons-group">
-            <button class="btn" onclick="event.stopPropagation(); openProductModal('PANTS GNUSH', { 'Negro': ['PANS NEGRO.jpg'] }, 175, 'Pants 100% Algodón (Alta Calidad).\nCorte Baggy.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nMedidas por Talla:\n- Talla S: 30 cm de ancho con elástico para cintura / 104 cm de largo\n- Talla M: 32 cm de ancho con elástico para cintura / 106 cm de largo\n- Talla L: 34 cm de ancho con elástico para cintura / 108 cm de largo\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', false, false, false, true, ['Negro'], 'pants')">AÑADIR AL CARRITO</button>
-            <button class="btn btn-buy-now catalog-buy-btn" onclick="event.stopPropagation(); openProductModal('PANTS GNUSH', { 'Negro': ['PANS NEGRO.jpg'] }, 175, 'Pants 100% Algodón (Alta Calidad).\nCorte Baggy.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nMedidas por Talla:\n- Talla S: 30 cm de ancho con elástico para cintura / 104 cm de largo\n- Talla M: 32 cm de ancho con elástico para cintura / 106 cm de largo\n- Talla L: 34 cm de ancho con elástico para cintura / 108 cm de largo\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', false, true, false, true, ['Negro'], 'pants')">COMPRAR AHORA</button>
+            <button class="btn" onclick="event.stopPropagation(); openProductModal('PANTS GNUSH', { 'Negro': ['PANS NEGRO.jpg', 'PANS NEGRO 2.jpg', 'PANS NEGRO 3.jpg'] }, 175, 'Pants 100% Algodón (Alta Calidad).\nCorte Baggy.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nMedidas por Talla:\n- Talla S: 30 cm de ancho con elástico para cintura / 104 cm de largo\n- Talla M: 32 cm de ancho con elástico para cintura / 106 cm de largo\n- Talla L: 34 cm de ancho con elástico para cintura / 108 cm de largo\n- Talla XL: 36 cm de ancho con elástico para cintura / 110 cm de largo\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', false, false, false, true, ['Negro'], 'pants')">AÑADIR AL CARRITO</button>
+            <button class="btn btn-buy-now catalog-buy-btn" onclick="event.stopPropagation(); openProductModal('PANTS GNUSH', { 'Negro': ['PANS NEGRO.jpg', 'PANS NEGRO 2.jpg', 'PANS NEGRO 3.jpg'] }, 175, 'Pants 100% Algodón (Alta Calidad).\nCorte Baggy.\nDiseño exclusivo de Gnush.\nEnvios a Todo el País.\n\nMedidas por Talla:\n- Talla S: 30 cm de ancho con elástico para cintura / 104 cm de largo\n- Talla M: 32 cm de ancho con elástico para cintura / 106 cm de largo\n- Talla L: 34 cm de ancho con elástico para cintura / 108 cm de largo\n- Talla XL: 36 cm de ancho con elástico para cintura / 110 cm de largo\n\nEvita pasar la plancha directamente sobre la impresión (DTF) para preservar su durabilidad.', false, true, false, true, ['Negro'], 'pants')">COMPRAR AHORA</button>
           </div>
         </article>
       </main>
@@ -2025,6 +2175,12 @@
           </div>
         </div>
 
+        <!-- Mensaje Informativo para Depósito / Transferencia -->
+        <div class="deposit-warning-box" id="deposit-warning-box">
+          <p><strong>IMPORTANTE:</strong> Para la opción de depósito/transferencia, el pago completo de la prenda se debe realizar <strong>antes</strong> de efectuar el envío del pedido. Una vez confirmado tu pago, le daremos seguimiento continuo a tu paquete para mantenerte informado en todo momento hasta su entrega.</p>
+          <button type="button" class="deposit-warning-close" onclick="closeDepositWarning()">ENTENDIDO / SEGUIR</button>
+        </div>
+
         <div class="cart-buttons-group">
           <p style="font-size: 11px; color: #666666; text-align: center; margin-bottom: 4px;">El costo de envío es adicional y varía según tu ubicación.</p>
           <button type="submit" class="btn">CONFIRMAR PEDIDO (WHATSAPP)</button>
@@ -2082,6 +2238,24 @@
     let gameAttempts = 0;
     let gameWon = false;
     const MAX_ATTEMPTS = 2;
+
+    // POPUP AL ENTRAR
+    window.addEventListener('DOMContentLoaded', function() {
+      setTimeout(() => {
+        const popup = document.getElementById('entry-popup-modal');
+        if (popup) popup.classList.add('show');
+      }, 400);
+    });
+
+    function closeEntryPopup() {
+      const popup = document.getElementById('entry-popup-modal');
+      if (popup) popup.classList.remove('show');
+    }
+
+    function closeDepositWarning() {
+      const warningBox = document.getElementById('deposit-warning-box');
+      if (warningBox) warningBox.classList.remove('show');
+    }
 
     window.addEventListener('scroll', function() {
       let currentScroll = window.pageYOffset || document.documentElement.scrollTop;
@@ -2424,13 +2598,16 @@
       selectedPaymentMethod = method;
       const codBtn = document.getElementById('pay-cod');
       const transferBtn = document.getElementById('pay-transfer');
+      const warningBox = document.getElementById('deposit-warning-box');
 
       if (method === 'Pago contra Entrega (Efectivo)') {
         codBtn.classList.add('selected');
         transferBtn.classList.remove('selected');
+        if (warningBox) warningBox.classList.remove('show');
       } else {
         transferBtn.classList.add('selected');
         codBtn.classList.remove('selected');
+        if (warningBox) warningBox.classList.add('show');
       }
     }
 
@@ -2478,7 +2655,8 @@
       if (upperTitle.includes('HOODIE')) {
         disableS = true;
       } else if (upperTitle.includes('PANTS')) {
-        disableXL = true;
+        // Habilitado XL en Pants
+        disableXL = false;
       } else if (upperTitle.includes('TEE') || upperTitle.includes('T-SHIRT')) {
         if (upperTitle.includes('GO LIFE BEAUTY') || 
             upperTitle.includes('GOOD SMILE') || 
