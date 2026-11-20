@@ -1110,6 +1110,24 @@
       display: flex;
     }
 
+    @keyframes pulseReady {
+      0% {
+        box-shadow: 0 10px 30px rgba(192, 38, 45, 0.25), 0 0 0 0 rgba(192, 38, 45, 0.55);
+      }
+      70% {
+        box-shadow: 0 10px 30px rgba(192, 38, 45, 0.25), 0 0 0 14px rgba(192, 38, 45, 0);
+      }
+      100% {
+        box-shadow: 0 10px 30px rgba(192, 38, 45, 0.25), 0 0 0 0 rgba(192, 38, 45, 0);
+      }
+    }
+
+    .floating-checkout-btn.offer-ready {
+      background-color: var(--accent-red);
+      border-color: var(--accent-red);
+      animation: pulseReady 1.6s infinite;
+    }
+
     /* MODAL POPUP ENTRADA */
     .entry-popup-modal {
       position: fixed;
@@ -1194,7 +1212,7 @@
       border: 1px solid var(--accent-red);
       border-radius: 20px;
       width: 100%;
-      max-width: 600px;
+      max-width: 500px;
       padding: 26px 20px;
       position: relative;
       text-align: center;
@@ -1215,8 +1233,8 @@
 
     .offer-cards-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
       margin-top: 10px;
     }
 
@@ -1224,7 +1242,7 @@
       border: 1px solid #eaeaea;
       background-color: #fcfcfc;
       border-radius: 14px;
-      padding: 16px 12px;
+      padding: 20px 14px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -1239,78 +1257,22 @@
     }
 
     .offer-card-item h3 {
-      font-size: 11.5px;
+      font-size: 12px;
       font-weight: 800;
       color: #111;
       margin-bottom: 8px;
     }
 
     .offer-card-item p {
-      font-size: 10px;
+      font-size: 10.5px;
       color: #555555;
       line-height: 1.4;
-      margin-bottom: 14px;
+      margin-bottom: 16px;
     }
 
     .offer-card-item .btn-buy-now {
-      padding: 9px;
+      padding: 10px;
       font-size: 10px;
-    }
-
-    /* MINIJUEGO DE PRECISIÓN */
-    .game-modal-content {
-      background-color: #ffffff;
-      border: 1.5px solid #111;
-      border-radius: 20px;
-      width: 100%;
-      max-width: 450px;
-      padding: 28px;
-      position: relative;
-      text-align: center;
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
-    }
-
-    .game-modal-content h2 {
-      font-size: 18px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      color: #111;
-      margin-bottom: 10px;
-      text-transform: uppercase;
-    }
-
-    .game-modal-content p {
-      font-size: 12px;
-      color: #666;
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .timer-display {
-      font-size: 42px;
-      font-weight: 800;
-      color: var(--accent-red);
-      background: #fcfcfc;
-      border: 1px solid #eaeaea;
-      border-radius: 14px;
-      padding: 18px;
-      margin-bottom: 18px;
-      letter-spacing: 2px;
-      user-select: none;
-    }
-
-    .game-attempts-info {
-      font-size: 11.5px;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 15px;
-      letter-spacing: 1px;
-    }
-
-    .game-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
     }
 
     /* MODAL CÓMO COMPRAR */
@@ -1533,7 +1495,7 @@
         gap: 10px;
       }
       .offer-card-item {
-        padding: 12px 10px;
+        padding: 14px 10px;
       }
       .offer-card-item h3 {
         font-size: 11.5px;
@@ -2067,31 +2029,6 @@
           </div>
           <button class="btn btn-buy-now" onclick="startOfferFlow('fullpack')">COMPRAR PACK</button>
         </div>
-
-        <div class="offer-card-item">
-          <div>
-            <div class="product-badge" style="position:static; display:inline-block; margin-bottom:8px; background-color: var(--accent-red);">MINIJUEGO</div>
-            <h3>ATINA AL 20.00</h3>
-            <p>Para el tiempo exactamente en el segundo 20.00 y gana una prenda gratis x compra de 1.</p>
-          </div>
-          <button class="btn btn-buy-now" style="background-color: var(--accent-red); border-color: var(--accent-red);" onclick="openGameModal()">JUGAR AHORA</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <!-- MODAL DEL MINIJUEGO -->
-  <div class="modal" id="game-modal">
-    <div class="game-modal-content">
-      <span class="close-btn" onclick="closeGameModal()">&times;</span>
-      <h2>RETO: ATINA AL 20.00</h2>
-      <p>Presiona <strong>"INICIAR JUEGO"</strong>, calcula el tiempo mentalmente mientras el cronómetro se oculta, y deténlo exactamente en el segundo <strong>20.00</strong> (ni un milisegundo más ni menos). Tienes 2 intentos.</p>
-      
-      <div class="timer-display" id="timer-display">0.000s</div>
-      <div class="game-attempts-info" id="game-attempts-info">Intentos restantes: 2</div>
-
-      <div class="game-actions" id="game-actions-container">
-        <button class="btn btn-buy-now" id="game-start-btn" onclick="startGameTimer()">INICIAR JUEGO</button>
       </div>
     </div>
   </div>
@@ -2252,11 +2189,19 @@
     let lastScrollTop = 0;
     const header = document.getElementById('main-header');
 
-    let gameInterval = null;
-    let gameStartTime = 0;
-    let gameAttempts = 0;
-    let gameWon = false;
-    const MAX_ATTEMPTS = 2;
+    function triggerCheckoutOfferReady(labelText = '¡OFERTA LISTA! REALIZAR PEDIDO') {
+      const btn = document.getElementById('floating-checkout');
+      if (!btn) return;
+      btn.classList.add('show', 'offer-ready');
+      btn.innerHTML = `<span>${labelText}</span>`;
+    }
+
+    function clearCheckoutOfferReady() {
+      const btn = document.getElementById('floating-checkout');
+      if (!btn) return;
+      btn.classList.remove('offer-ready');
+      btn.innerHTML = '<span>REALIZAR PEDIDO</span>';
+    }
 
     window.addEventListener('DOMContentLoaded', function() {
       setTimeout(() => {
@@ -2297,110 +2242,6 @@
 
       lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
     }, { passive: true });
-
-    function openGameModal() {
-      closeOfferModal();
-      
-      const isBlocked = localStorage.getItem('gnush_game_blocked');
-      const savedAttempts = parseInt(localStorage.getItem('gnush_game_attempts') || '0');
-      const savedWon = localStorage.getItem('gnush_game_won') === 'true';
-
-      gameAttempts = savedAttempts;
-      gameWon = savedWon;
-
-      document.getElementById('game-modal').classList.add('open');
-      updateGameUI(isBlocked === 'true' || gameAttempts >= MAX_ATTEMPTS);
-    }
-
-    function closeGameModal() {
-      if (gameInterval) clearInterval(gameInterval);
-      document.getElementById('game-modal').classList.remove('open');
-    }
-
-    function updateGameUI(isBlocked) {
-      const attemptsInfo = document.getElementById('game-attempts-info');
-      const actionsContainer = document.getElementById('game-actions-container');
-      const timerDisplay = document.getElementById('timer-display');
-
-      if (gameWon) {
-        attemptsInfo.innerText = '¡FELICIDADES! HAS GANADO UNA PRENDA GRATIS POR LA COMPRA DE 1.';
-        timerDisplay.innerText = '¡GANADO!';
-        actionsContainer.innerHTML = `<button class="btn btn-buy-now" onclick="closeGameModal(); filterCategory('all');">VER CATÁLOGO Y APLICAR PREMIO</button>`;
-        return;
-      }
-
-      if (isBlocked || gameAttempts >= MAX_ATTEMPTS) {
-        attemptsInfo.innerText = 'HAS AGOTADO TUS 2 INTENTOS DESDE ESTE DISPOSITIVO.';
-        timerDisplay.innerText = 'BLOQUEADO';
-        actionsContainer.innerHTML = `<button class="btn btn-secondary" disabled style="opacity: 0.5; cursor: not-allowed;">JUEGO BLOQUEADO</button>`;
-        return;
-      }
-
-      attemptsInfo.innerText = `Intentos realizados: ${gameAttempts} / ${MAX_ATTEMPTS}`;
-      timerDisplay.innerText = '0.000s';
-      actionsContainer.innerHTML = `<button class="btn btn-buy-now" id="game-start-btn" onclick="startGameTimer()">INICIAR JUEGO</button>`;
-    }
-
-    function startGameTimer() {
-      const attemptsInfo = document.getElementById('game-attempts-info');
-      const actionsContainer = document.getElementById('game-actions-container');
-      const timerDisplay = document.getElementById('timer-display');
-
-      gameAttempts++;
-      localStorage.setItem('gnush_game_attempts', gameAttempts);
-
-      attemptsInfo.innerText = `Intento ${gameAttempts} de ${MAX_ATTEMPTS} en curso...`;
-      timerDisplay.innerText = '0.000s';
-      timerDisplay.style.opacity = '1';
-
-      setTimeout(() => {
-        if (gameInterval) {
-          timerDisplay.style.opacity = '0';
-        }
-      }, 1000);
-
-      gameStartTime = performance.now();
-
-      actionsContainer.innerHTML = `<button class="btn btn-buy-now" id="game-stop-btn" style="background-color: var(--accent-red); border-color: var(--accent-red);" onclick="stopGameTimer()">¡PARAR TIEMPO YA!</button>`;
-
-      gameInterval = setInterval(() => {
-        let elapsed = (performance.now() - gameStartTime) / 1000;
-        timerDisplay.innerText = elapsed.toFixed(3) + 's';
-      }, 31);
-    }
-
-    function stopGameTimer() {
-      if (gameInterval) clearInterval(gameInterval);
-      gameInterval = null;
-
-      const timerDisplay = document.getElementById('timer-display');
-      timerDisplay.style.opacity = '1';
-
-      let elapsed = (performance.now() - gameStartTime) / 1000;
-      let elapsedStr = elapsed.toFixed(2);
-      timerDisplay.innerText = elapsed.toFixed(3) + 's';
-
-      const actionsContainer = document.getElementById('game-actions-container');
-      const attemptsInfo = document.getElementById('game-attempts-info');
-
-      if (elapsedStr === '20.00') {
-        gameWon = true;
-        localStorage.setItem('gnush_game_won', 'true');
-        localStorage.setItem('gnush_game_blocked', 'true');
-        
-        attemptsInfo.innerText = '¡Felicidades! ¡Atinaste exactamente en el segundo 20.00!';
-        actionsContainer.innerHTML = `<button class="btn btn-buy-now" onclick="closeGameModal(); filterCategory('all');">¡RECLAMAR PRENDA GRATIS!</button>`;
-      } else {
-        if (gameAttempts >= MAX_ATTEMPTS) {
-          localStorage.setItem('gnush_game_blocked', 'true');
-          attemptsInfo.innerText = `Fallaste (${elapsedStr}s). Has agotado tus 2 intentos.`;
-          actionsContainer.innerHTML = `<button class="btn btn-secondary" disabled style="opacity: 0.5;">JUEGO BLOQUEADO</button>`;
-        } else {
-          attemptsInfo.innerText = `Fallaste (${elapsedStr}s). Te queda 1 intento.`;
-          actionsContainer.innerHTML = `<button class="btn btn-buy-now" onclick="openGameModal()">INTENTAR SEGUNDA VEZ</button>`;
-        }
-      }
-    }
 
     function openOfferModal() {
       document.getElementById('offer-modal').classList.add('open');
@@ -2672,10 +2513,7 @@
       let upperTitleCheck = title.toUpperCase();
       let isExcludedFromOffer = (upperTitleCheck.includes('BEYOND LIMITS') || upperTitleCheck.includes('FAITH WITHOUT LIMITS') || upperTitleCheck.includes('DAVID DE MIGUEL ANGEL'));
 
-      if (gameWon && cart.length === 1) {
-        calculatedPrice = 0;
-        document.getElementById('modal-price').innerHTML = `<span style="text-decoration:line-through; font-size:15px; color:#999; margin-right:8px;">Q.${price}.00</span> <span style="color:#27ae60; font-weight:800;">¡PREMIO MINIJUEGO: GRATIS (Q.0.00)!</span>`;
-      } else if (isOfferActive && activeOfferType === 'fullpack' && !isExcludedFromOffer) {
+      if (isOfferActive && activeOfferType === 'fullpack' && !isExcludedFromOffer) {
         calculatedPrice = Math.round(price * 0.85);
         document.getElementById('modal-price').innerHTML = `<span style="text-decoration:line-through; font-size:15px; color:#999; margin-right:8px;">Q.${price}.00</span> Q.${calculatedPrice}.00 (15% OFF)`;
       } else if (isOfferActive && activeOfferType === '2hoodies' && promo2HoodiesStep === 3 && categoryType === 'cap') {
@@ -2747,9 +2585,7 @@
         let isFullPackItem = false;
         let isPromoCapItem = false;
 
-        if (gameWon && cart.length === 1) {
-          finalPrice = 0;
-        } else if (isOfferActive && activeOfferType === 'fullpack' && !isExcludedFromOffer) {
+        if (isOfferActive && activeOfferType === 'fullpack' && !isExcludedFromOffer) {
           isFullPackItem = true;
         } else if (isOfferActive && activeOfferType === '2hoodies' && promo2HoodiesStep === 3 && categoryType === 'cap') {
           finalPrice = 0;
@@ -2766,6 +2602,7 @@
             showFullPackStep(fullPackStep + 1);
           } else {
             exitOfferMode();
+            triggerCheckoutOfferReady();
           }
         } else if (isOfferActive && activeOfferType === '2hoodies') {
           if (promo2HoodiesStep === 1) {
@@ -2774,6 +2611,7 @@
             show2HoodiesStep(3);
           } else if (promo2HoodiesStep === 3) {
             exitOfferMode();
+            triggerCheckoutOfferReady();
           }
         }
       };
@@ -2784,9 +2622,7 @@
         let isFullPackItem = false;
         let isPromoCapItem = false;
 
-        if (gameWon && cart.length === 1) {
-          finalPrice = 0;
-        } else if (isOfferActive && activeOfferType === 'fullpack' && !isExcludedFromOffer) {
+        if (isOfferActive && activeOfferType === 'fullpack' && !isExcludedFromOffer) {
           isFullPackItem = true;
         } else if (isOfferActive && activeOfferType === '2hoodies' && promo2HoodiesStep === 3 && categoryType === 'cap') {
           finalPrice = 0;
@@ -2818,12 +2654,6 @@
 
     function addToCart(title, image, price, originalPrice, description, size, color, isFullPackItem = false, isPromoCapItem = false, categoryType = 'hoodie') {
       let cleanTitle = title;
-      let isGameReward = false;
-
-      if (gameWon && cart.length === 1 && price === 0) {
-        cleanTitle = `${title} (¡PREMIO MINIJUEGO: 1 PRENDA GRATIS!)`;
-        isGameReward = true;
-      }
 
       let specText = '';
       if (color && size) {
@@ -2845,7 +2675,6 @@
         description, 
         size, 
         color, 
-        isGameReward: isGameReward,
         isFullPackItem: isFullPackItem,
         isPromoCapItem: isPromoCapItem,
         categoryType: categoryType
@@ -2900,7 +2729,7 @@
           }
         }
         item.isFullPackItem = false;
-        if (!item.isPromoCapItem && !item.isGameReward) {
+        if (!item.isPromoCapItem) {
           item.price = item.originalPrice;
         }
         item.title = item.title.replace(' (OFERTA PACK 15% OFF)', '');
@@ -2982,8 +2811,7 @@
         let priceDisplay = '';
 
         if (item.price === 0) {
-          let freeReason = item.isPromoCapItem ? '¡GORRA GRATIS POR PROMOCIÓN!' : '¡GRATIS POR MINIJUEGO!';
-          priceDisplay = `<span style="color: #27ae60; font-weight:bold;">${freeReason} (Q.0.00)</span>`;
+          priceDisplay = `<span style="color: #27ae60; font-weight:bold;">¡GORRA GRATIS POR PROMOCIÓN! (Q.0.00)</span>`;
         } else if (itemSavings > 0) {
           priceDisplay = `<span style="color:var(--accent-red); font-weight:bold;">Q.${item.price}.00</span> <span style="text-decoration:line-through; font-size:11px; color:#999;">Q.${currentItemOriginal}.00</span>`;
         } else {
@@ -3019,6 +2847,7 @@
     }
 
     function clearCart() {
+      clearCheckoutOfferReady();
       cart = [];
       preOfferCartBackup = [];
       exitOfferMode();
@@ -3026,6 +2855,7 @@
     }
 
     function toggleCartModal() {
+      clearCheckoutOfferReady();
       const modal = document.getElementById('cart-modal');
       if (modal.classList.contains('open') && isOfferActive) {
         exitOfferMode();
@@ -3084,6 +2914,7 @@
 
     function submitOrder(e) {
       e.preventDefault();
+      clearCheckoutOfferReady();
       if (cart.length === 0) {
         alert('Tu carrito está vacío. Agrega productos antes de realizar el pedido.');
         return;
